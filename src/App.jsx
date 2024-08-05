@@ -67,10 +67,10 @@ const App = () => {
       value={audioUrl}
       onChange={handleAudioURL}
       />
-      <button onClick={handleTranscribe} disabled={loading} className='px-5 py-3 rounded-lg text-center font-bold bg-black text-white'>
+      <button onClick={handleTranscribe} disabled={loading} className={`px-5 py-3 rounded-lg text-center font-bold bg-black text-white ${loading ? 'bg-gray-600' : ''}`}>
         {loading ? 'Transcribing...' : 'Transcribe Audio'}
       </button>
-      {transcript && <pre className='max-w-full px-20'>{transcript}</pre>}
+      {transcript && <pre className='max-w-full px-20 py-5'>{transcript}</pre>}
     </div>
   );
 };
