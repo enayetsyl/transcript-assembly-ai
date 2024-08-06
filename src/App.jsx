@@ -6,11 +6,9 @@ const App = () => {
   const [loading, setLoading] = useState(false);
   const [audioUrl, setAudioUrl] = useState('https://res.cloudinary.com/dj3qabx11/video/upload/v1722867224/RT60_BookstoreRecommendation_Regular_z3ugt0.mp3')
 
-
   const handleAudioURL = (e) => {
     setAudioUrl(e.target.value)
   }
-  
 
   const handleTranscribe = async () => {
     setLoading(true);
@@ -57,7 +55,7 @@ const App = () => {
   };
 
   const formatTranscript = (utterances) => {
-    return utterances.map(utterance => `Speaker ${utterance.speaker}: ${utterance.text}`).join('\n');
+    return utterances.map(utterance => `\nSpeaker ${utterance.speaker}: ${utterance.text}`).join('');
   };
 
   return (
@@ -70,7 +68,7 @@ const App = () => {
       <button onClick={handleTranscribe} disabled={loading} className={`px-5 py-3 rounded-lg text-center font-bold bg-black text-white ${loading ? 'bg-gray-600' : ''}`}>
         {loading ? 'Transcribing...' : 'Transcribe Audio'}
       </button>
-      {transcript && <pre className='max-w-full px-20 py-5'>{transcript}</pre>}
+      {transcript && <pre className='w-full px-20 py-5 break-words whitespace-pre-wrap'>{transcript}</pre>}
     </div>
   );
 };
